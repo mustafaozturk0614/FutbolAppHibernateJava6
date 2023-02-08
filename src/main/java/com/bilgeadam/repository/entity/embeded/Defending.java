@@ -14,9 +14,12 @@ import javax.persistence.Embeddable;
 @Builder
 
 public class Defending {
-    Integer defending_marking_awareness;
-    Integer defending_standing_tackle;
-    Integer defending_sliding_tackle;
+
+    int defending_marking_awareness;
+
+    int defending_standing_tackle = 0;
+
+    int defending_sliding_tackle = 0;
 
 
 }

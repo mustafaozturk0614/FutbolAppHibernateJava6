@@ -41,22 +41,29 @@ public class Player {
     int defending;
     int physic;
     @Embedded
-    Attacking attacking;
+    @Builder.Default
+    Attacking attacking = Attacking.builder().build();
     @Embedded
-    Defending defence;
+    @Builder.Default
+    Defending defence = Defending.builder().build();
     @Embedded
-    Golkepping golkepping;
+    @Builder.Default
+    Golkepping golkepping = Golkepping.builder().build();
     @Embedded
-    Mentality mentality;
+    @Builder.Default
+    Mentality mentality = Mentality.builder().build();
     @Embedded
-    Movement movement;
+    @Builder.Default
+    Movement movement = Movement.builder().build();
     @Embedded
-    Power power;
+    @Builder.Default
+    Power power = Power.builder().build();
     @Embedded
-    Skill skill;
+    @Builder.Default
+    Skill skill = Skill.builder().build();
     @ManyToOne()
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     Club club;
 
-
+ 
 }

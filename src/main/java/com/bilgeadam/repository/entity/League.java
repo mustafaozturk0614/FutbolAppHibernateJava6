@@ -2,6 +2,7 @@ package com.bilgeadam.repository.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Entity
+@Data
 public class League {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +24,12 @@ public class League {
     List<Club> clubs;
 
 
+    @Override
+    public String toString() {
+        return "League{" +
+                "id=" + id +
+                ", league_name='" + league_name + '\'' +
+                ", league_level=" + league_level +
+                '}';
+    }
 }

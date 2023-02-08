@@ -14,12 +14,12 @@ import javax.persistence.Embeddable;
 @Builder
 
 public class Golkepping {
-    Integer goalkeeping_diving;
-    Integer goalkeeping_handling;
-    Integer goalkeeping_kicking;
-    Integer goalkeeping_positioning;
-    Integer goalkeeping_reflexes;
-    Integer goalkeeping_speed;
+    int goalkeeping_diving;
+    int goalkeeping_handling;
+    int goalkeeping_kicking;
+    int goalkeeping_positioning;
+    int goalkeeping_reflexes;
+    int goalkeeping_speed;
 
 
 }

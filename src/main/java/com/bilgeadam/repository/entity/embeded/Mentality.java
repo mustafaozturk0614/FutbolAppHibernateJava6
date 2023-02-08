@@ -14,12 +14,13 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 @Builder
 public class Mentality {
-    Integer mentality_aggression;
-    Integer mentality_interceptions;
-    Integer mentality_positioning;
-    Integer mentality_vision;
-    Integer mentality_penalties;
-    Integer mentality_composure;
+
+    int mentality_aggression;
+    int mentality_interceptions;
+    int mentality_positioning;
+    int mentality_vision;
+    int mentality_penalties;
+    int mentality_composure;
 
 
 }

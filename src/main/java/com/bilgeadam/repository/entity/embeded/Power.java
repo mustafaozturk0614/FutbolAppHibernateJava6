@@ -15,11 +15,11 @@ import javax.persistence.Embeddable;
 
 public class Power {
 
-    Integer power_shot_power;
-    Integer power_jumping;
-    Integer power_stamina;
-    Integer power_strength;
-    Integer power_long_shots;
+    int power_shot_power;
+    int power_jumping;
+    int power_stamina;
+    int power_strength;
+    int power_long_shots;
 
 
 }

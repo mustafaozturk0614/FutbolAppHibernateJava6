@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
@@ -14,11 +13,11 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 @Builder
 public class Skill {
-    @Column(nullable = true)
+
     private int skill_dribbling;
-    private Integer skill_curve;
-    private Integer skill_fk_accuracy;
-    private Integer skill_long_passing;
-    private Integer skill_ball_control;
+    private int skill_curve;
+    private int skill_fk_accuracy;
+    private int skill_long_passing;
+    private int skill_ball_control;
 
 }

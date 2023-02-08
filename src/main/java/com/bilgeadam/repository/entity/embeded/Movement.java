@@ -13,10 +13,10 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 @Builder
 public class Movement {
-    private Integer movement_acceleration;
-    private Integer movement_sprint_speed;
-    private Integer movement_agility;
-    private Integer movement_reactions;
-    private Integer movement_balance;
+    private int movement_acceleration;
+    private int movement_sprint_speed;
+    private int movement_agility;
+    private int movement_reactions;
+    private int movement_balance;
 
 }
