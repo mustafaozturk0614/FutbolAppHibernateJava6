@@ -10,8 +10,12 @@ public class LeaugeController {
     public LeaugeController() {
         this.leagueService = new LeagueService();
     }
-    
+
     public void createLeague(League league) {
         leagueService.save(league);
+    }
+
+    public void deleteById(long id) {
+        leagueService.deleteById(id);
     }
 }

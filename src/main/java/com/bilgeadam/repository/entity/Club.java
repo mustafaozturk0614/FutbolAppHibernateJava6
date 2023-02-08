@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,7 +23,17 @@ public class Club {
     @OneToMany(mappedBy = "club")
     private List<Player> players;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+
     private League league;
 
+    @Override
+    public String toString() {
+        return "Club{" +
+                "id=" + id +
+                ", club_name='" + club_name + '\'' +
+                ", league=" + league +
+                '}';
+    }
 }

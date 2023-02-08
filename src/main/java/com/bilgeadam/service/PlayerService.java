@@ -6,8 +6,10 @@ import com.bilgeadam.utility.MyFactoryService;
 
 public class PlayerService extends MyFactoryService<PlayerRepository, Player, Long> {
 
-    
+
     public PlayerService() {
         super(new PlayerRepository());
     }
+
+
 }

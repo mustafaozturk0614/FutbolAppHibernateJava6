@@ -2,13 +2,12 @@ package com.bilgeadam.repository.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -21,4 +20,6 @@ public class League {
     private int league_level;
     @OneToMany(mappedBy = "league")
     List<Club> clubs;
+
+
 }

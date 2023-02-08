@@ -1,5 +1,9 @@
 package com.bilgeadam.utility;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -13,6 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class MyFactoryRepository<T, ID> implements ICrud<T, ID> {
 
     private EntityManager entityManager;
@@ -28,13 +36,19 @@ public class MyFactoryRepository<T, ID> implements ICrud<T, ID> {
     }
 
     public void openSession() {
-        ss = HibernateUtility.getSessionFactory().openSession();
+
+
+        ss = getEntityManager().unwrap(Session.class);
+        //      ss = HibernateUtility.getSessionFactory().openSession();
         tt = ss.beginTransaction();
+
+
     }
 
     public void closeSession() {
         tt.commit();
         ss.close();
+
     }
 
     @Override
@@ -69,10 +83,18 @@ public class MyFactoryRepository<T, ID> implements ICrud<T, ID> {
     public void delete(T entity) {
         try {
             openSession();
-            ss.delete(entity);
+            ss.remove(entity);
             closeSession();
         } catch (Exception exception) {
             throw exception;
+        }
+    }
+
+    public EntityManager getEntityManager() {
+        if (entityManager.isOpen()) {
+            return entityManager;
+        } else {
+            return entityManager = HibernateUtility.getSessionFactory().createEntityManager();
         }
     }
 
@@ -83,7 +105,7 @@ public class MyFactoryRepository<T, ID> implements ICrud<T, ID> {
             Root<T> root = (Root<T>) criteria.from(t.getClass());
             criteria.select(root);
             criteria.where(criteriaBuilder.equal(root.get("id"), id));
-            T deleteEntity = entityManager.createQuery(criteria).getSingleResult();
+            T deleteEntity = getEntityManager().createQuery(criteria).getSingleResult();
             openSession();
             ss.delete(deleteEntity);
             closeSession();
@@ -99,7 +121,7 @@ public class MyFactoryRepository<T, ID> implements ICrud<T, ID> {
         Root<T> root = (Root<T>) criteria.from(t.getClass());
         criteria.select(root);
         criteria.where(criteriaBuilder.equal(root.get("id"), id));
-        List<T> result = entityManager.createQuery(criteria).getResultList();
+        List<T> result = getEntityManager().createQuery(criteria).getResultList();
         if (result.isEmpty()) return Optional.empty();
         return Optional.of(result.get(0));
     }
@@ -111,7 +133,7 @@ public class MyFactoryRepository<T, ID> implements ICrud<T, ID> {
             Root<T> root = (Root<T>) criteria.from(t.getClass());
             criteria.select(root);
             criteria.where(criteriaBuilder.equal(root.get("id"), id));
-            List<T> result = entityManager.createQuery(criteria).getResultList();
+            List<T> result = getEntityManager().createQuery(criteria).getResultList();
             return !result.isEmpty();
         } catch (Exception exception) {
             return false;
@@ -123,7 +145,7 @@ public class MyFactoryRepository<T, ID> implements ICrud<T, ID> {
         CriteriaQuery<T> criteria = (CriteriaQuery<T>) criteriaBuilder.createQuery(t.getClass());
         Root<T> root = (Root<T>) criteria.from(t.getClass());
         criteria.select(root);
-        List<T> result = entityManager.createQuery(criteria).getResultList();
+        List<T> result = getEntityManager().createQuery(criteria).getResultList();
         return result;
     }
 
@@ -133,7 +155,7 @@ public class MyFactoryRepository<T, ID> implements ICrud<T, ID> {
         Root<T> root = (Root<T>) criteria.from(t.getClass());
         criteria.select(root);
         criteria.where(criteriaBuilder.equal(root.get(columnName), columnValue));
-        List<T> result = entityManager.createQuery(criteria).getResultList();
+        List<T> result = getEntityManager().createQuery(criteria).getResultList();
         return result;
     }
 
@@ -186,7 +208,7 @@ public class MyFactoryRepository<T, ID> implements ICrud<T, ID> {
              * select * from t where ad='%mur%' and adres='%Ankara%'
              */
             criteria.where(list.toArray(new Predicate[]{}));
-            result = entityManager.createQuery(criteria).getResultList();
+            result = getEntityManager().createQuery(criteria).getResultList();
         } catch (Exception exception) {
             System.out.println("Beklenmeyen bir hata oluştu....: " + exception.toString());
         }

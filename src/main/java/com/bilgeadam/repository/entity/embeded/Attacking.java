@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
@@ -13,10 +14,15 @@ import javax.persistence.Embeddable;
 @AllArgsConstructor
 @Builder
 public class Attacking {
-    private Integer attacking_crossing;
-    private Integer attacking_finishing;
-    private Integer attacking_heading_accuracy;
-    private Integer attacking_short_passing;
-    private Integer attacking_volleys;
+    @Column(columnDefinition = "int default 0")
+    private int attacking_crossing;
+    @Column(columnDefinition = "int default 0")
+    private int attacking_finishing;
+    @Column(columnDefinition = "int default 0")
+    private int attacking_heading_accuracy;
+    @Column(columnDefinition = "int default 0")
+    private int attacking_short_passing;
+    @Column(columnDefinition = "int default 0")
+    private int attacking_volleys;
 
 }

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 
@@ -19,7 +20,8 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String long_name;
-    String player_positions;
+    @Enumerated(EnumType.STRING)
+    PlayerPositions player_positions;
     int overall;
     int potential;
     double value_eur;
@@ -39,7 +41,6 @@ public class Player {
     int defending;
     int physic;
     @Embedded
-    @Column(nullable = true)
     Attacking attacking;
     @Embedded
     Defending defence;
@@ -53,7 +54,8 @@ public class Player {
     Power power;
     @Embedded
     Skill skill;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     Club club;
 
 
