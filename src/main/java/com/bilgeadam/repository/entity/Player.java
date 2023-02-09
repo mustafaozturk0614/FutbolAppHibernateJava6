@@ -62,7 +62,7 @@ public class Player {
     @Builder.Default
     Skill skill = Skill.builder().build();
     @ManyToOne()
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
     Club club;
 
 

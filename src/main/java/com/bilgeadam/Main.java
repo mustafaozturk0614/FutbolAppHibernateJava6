@@ -1,6 +1,5 @@
 package com.bilgeadam;
 
-import com.bilgeadam.controller.PlayerController;
 import com.bilgeadam.repository.entity.Player;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 //        ClubController clubController = new ClubController();
-        PlayerController playerController = new PlayerController();
+        //       PlayerController playerController = new PlayerController();
 //        LeaugeController leaugeController = new LeaugeController();
 //        League league = League.builder().league_name("superlig").build();
 //        Club club = Club.builder().club_name("MyClub").league(league).build();

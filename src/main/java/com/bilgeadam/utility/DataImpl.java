@@ -1,5 +1,6 @@
 package com.bilgeadam.utility;
 
+import com.bilgeadam.controller.PlayerController;
 import com.bilgeadam.repository.ClubRepository;
 import com.bilgeadam.repository.entity.Club;
 import com.bilgeadam.repository.entity.League;
@@ -52,6 +53,7 @@ public class DataImpl {
 
 
          */
+        PlayerController playerController = new PlayerController();
         ClubRepository clubRepository = new ClubRepository();
         Club club = clubRepository.saveWithNameAndLeague(list.get(9), league);
 
@@ -83,7 +85,10 @@ public class DataImpl {
                 .mentality(createMentality(list.subList(43, 49)))
                 .defence(createDefance(list.subList(49, 52)))
                 .golkepping(createGollkeping(list.subList(52, 58)))
+                .club(club)
                 .build();
+        playerController.createPlayer(player);
+
     }
 
     private static Golkepping createGollkeping(List<String> subList) {
