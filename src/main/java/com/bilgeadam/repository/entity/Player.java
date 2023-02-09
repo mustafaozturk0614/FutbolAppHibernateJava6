@@ -65,5 +65,5 @@ public class Player {
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     Club club;
 
- 
+
 }

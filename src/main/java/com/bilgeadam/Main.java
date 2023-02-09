@@ -1,18 +1,18 @@
 package com.bilgeadam;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import com.bilgeadam.controller.PlayerController;
+import com.bilgeadam.repository.entity.Player;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Main {
+    static List<List<String>> newList = new ArrayList<>();
+    static List<Player> players = new ArrayList<>();
+
     public static void main(String[] args) throws InterruptedException {
 //        ClubController clubController = new ClubController();
-//        PlayerController playerController = new PlayerController();
+        PlayerController playerController = new PlayerController();
 //        LeaugeController leaugeController = new LeaugeController();
 //        League league = League.builder().league_name("superlig").build();
 //        Club club = Club.builder().club_name("MyClub").league(league).build();
@@ -32,24 +32,10 @@ public class Main {
 //        //     clubController.deleteById(1L);
 //        //  leaugeController.deleteById(1L);
 
-        List<String> list = new ArrayList<>();
-        List<List<String>> newList = new ArrayList<>();
-        try {
-            BufferedReader bufferedReader =
-                    new BufferedReader(new FileReader("E:/futbol/superlig7.csv", StandardCharsets.UTF_8));
-            String line = "";
 
-            while ((line = bufferedReader.readLine()) != null) {
-
-                newList.add(Arrays.asList(line.split(";")));
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        System.out.println(newList.get(1).get(0));
     }
 
 
 }
+
+

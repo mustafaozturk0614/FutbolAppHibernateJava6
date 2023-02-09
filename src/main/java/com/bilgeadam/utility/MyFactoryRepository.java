@@ -55,7 +55,9 @@ public class MyFactoryRepository<T, ID> implements ICrud<T, ID> {
     public <S extends T> S save(S entity) {
         try {
             openSession();
-            ss.save(entity);
+            ss.saveOrUpdate(entity);
+            ss.flush();
+            ss.clear();
             closeSession();
             return entity;
         } catch (Exception exception) {

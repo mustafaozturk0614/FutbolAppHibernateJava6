@@ -1,6 +1,7 @@
 package com.bilgeadam.controller;
 
 import com.bilgeadam.repository.entity.Club;
+import com.bilgeadam.repository.entity.League;
 import com.bilgeadam.service.ClubService;
 
 public class ClubController {
@@ -21,4 +22,8 @@ public class ClubController {
     }
 
 
+    public Club saveWithName(String s, League league) {
+
+        return clubService.saveWithName(s, league);
+    }
 }

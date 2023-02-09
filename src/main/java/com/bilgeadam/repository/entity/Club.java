@@ -25,7 +25,6 @@ public class Club {
 
     @ManyToOne()
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-
     private League league;
 
     @Override
