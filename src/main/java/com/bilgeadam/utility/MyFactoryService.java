@@ -1,8 +1,11 @@
 package com.bilgeadam.utility;
 
+import lombok.Getter;
+
 import java.util.List;
 import java.util.Optional;
 
+@Getter
 public class MyFactoryService<R extends MyFactoryRepository, T, ID> implements IService<T, ID> {
     R repository;
 

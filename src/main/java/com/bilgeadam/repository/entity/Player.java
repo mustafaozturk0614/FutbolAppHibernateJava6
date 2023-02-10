@@ -15,6 +15,12 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 @Entity
+@NamedQueries(
+        {@NamedQuery(name = "findByPosition", query = "select p from Player as p where p.player_positions=:position"),
+                @NamedQuery(name = "findByMid", query = "select p from Player as p where p.player_positions in " +
+                        "('CM', 'CDM', 'CAM', 'RM', 'LM')")
+        }
+)
 public class Player {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,9 +1,12 @@
 package com.bilgeadam;
 
 import com.bilgeadam.repository.entity.Player;
+import com.bilgeadam.repository.entity.PlayerPositions;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     static List<List<String>> newList = new ArrayList<>();
@@ -31,7 +34,11 @@ public class Main {
 //        //     clubController.deleteById(1L);
 //        //  leaugeController.deleteById(1L);
 
+        System.out.println(PlayerPositions.CM.getArea());
+        List<PlayerPositions> ps = Arrays.asList(PlayerPositions.values()).stream()
+                .filter(x -> x.getArea().equals("Defans")).collect(Collectors.toList());
 
+        ps.forEach(System.out::println);
     }
 
 
